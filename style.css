@@ -1,0 +1,743 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilo da segunda barra */
+.top-bar {
+    background-color: #005756; 
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+  }
+  
+  .top-bar a {
+    color: #fff;
+    text-decoration: none;
+  }
+/*INICIO- Barra de navegação*/
+
+.barra {
+    background-color: #f8f8f8;
+}
+
+.barra li a {
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    transition: 0.4s;
+    text-align: center;
+}
+
+.barra li a:hover:not(.comprar-ingresso) {
+    opacity: 0.8;
+
+}
+
+/* LOGO GERAL - Barra de navegação */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+
+    }
+}
+
+@media (min-width: 1024px) {
+    .logo {
+        font-size: 2rem;
+
+    }
+}
+
+.zoo {
+    color: #005756;
+}
+
+.land {
+    color: #0f6867;
+}
+
+.comprar-ingresso {
+    background-color: #048459;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.comprar-ingresso:hover {
+    background-color: #025a3d;
+}
+
+.barra .navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Sessão “Home”*/
+
+
+/*--Layout--*/
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/img/loboh.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.home h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.home .zoo {
+    color: #005756;
+}
+
+.home .land {
+    color: #0f6867;
+}
+
+.home p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.home .comprar-ingresso {
+    background-color: #048459;
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+/*--Modal Layout--*/
+#modal-compra {
+    display: flex;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    cursor: default;
+
+    /* Controle de animação */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#modal-compra.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*--Modal conteudo interno--*/
+.modal-conteudo {
+    background: linear-gradient(to bottom, #0a0905, #5a330f);
+    width: 600px;
+    max-width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    transform: scale(0.95);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+#modal-compra.show .modal-conteudo {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/*--Modal Formulario--*/
+.modal-texto {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #fff;
+}
+
+.modal-texto h2 {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-texto label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-texto input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.modal-texto button {
+    width: 100%;
+    padding: 10px;
+    background-color: #41dd32;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.modal-texto button:hover {
+    background-color: #2c8b23;
+}
+
+/*--Modal Imagem--*/
+.modal-imagem {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0 16px 16px 0;
+}
+
+.modal-imagem img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*--Modal Botão*/
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#close-modal:hover {
+    color: #ccc;
+}
+
+/* Seção “Sobre” */
+
+/*--Layout da sessão--*/
+.sobre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 80px 20px;
+    gap: 40px;
+}
+
+.sobre .container {
+    justify-content: space-between;
+}
+
+;
+
+.sobre .texto-sobre,
+.sobre .imagem-sobre {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.sobre .texto-sobre {
+    padding: 0;
+}
+
+.sobre .imagem-sobre {
+    padding: 0;
+}
+
+.imagem-sobre img {
+    max-height: 600px;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 992px) {
+    .sobre .texto-sobre {
+        padding-right: 20px;
+    }
+
+    .sobre .imagem-sobre {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sobre {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .sobre .container {
+        justify-content: row;
+    }
+
+    .sobre .texto-sobre,
+    .sobre .imagem-sobre {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .sobre .texto-sobre {
+        margin-bottom: 30px;
+    }
+}
+
+
+/*--Estilização dos Textos--*/
+.texto-sobre .mini-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.texto-sobre .titulo-grande {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.texto-sobre .descricao {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.lista-pilares li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lista-pilares i {
+    font-size: 1.2rem;
+}
+
+
+/* Seção “Atrações” */
+/*--Layout da sessão--*/
+.atracoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 80px 20px;
+    gap: 40px;
+}
+
+.atracoes .texto-atracoes,
+.atracoes .imagem-atracoes {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.atracoes .texto-atracoes {
+    padding-right: 20px;
+}
+
+.atracoes .imagem-atracoes {
+    padding-left: 20px;
+}
+
+.atracoes img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/*--Estilização dos Textos--*/
+.atracoes .texto-atracoes .mini-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.atracoes .texto-atracoes .titulo-grande {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.atracoes .texto-atracoes .atracao-paga {
+    display: inline-block;
+    background-color: #BCFAE5;
+    color: #111111;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.atracoes .texto-atracoes .descricao-pequeno {
+    font-size: 0.9rem;
+    color: #4b4b4b;
+    font-style: italic;
+    background-color: #f3f3f3;
+    border-left: 3px solid #005756;
+    /* verde suave do seu tema */
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.atracoes .texto-atracoes .btn-saiba-mais {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #048459;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    transition: 0.8s;
+}
+
+.atracoes .texto-atracoes .btn-saiba-mais:hover {
+    background-color: #025a3d;
+}
+
+/* Responsivo */
+@media (max-width: 991.98px) {
+    .atracoes {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .atracoes .texto-atracoes,
+    .atracoes .imagem-atracoes {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .atracoes .texto-atracoes {
+        margin-bottom: 30px;
+    }
+}
+
+
+/* Estilização dos cartões */
+.animal-card {
+    width: 16rem;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 350px;
+    max-height: 350px;
+}
+
+
+.animal-card img {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.animal-card .card-body {
+    flex-grow: 1;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.animal-card .card-text {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#carousel {
+    background:transparent;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 1rem;
+}
+
+/* Estilização do botão */
+.btn-light {
+    background-color: #048459;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 0.7rem 1rem;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-light:hover {
+    background-color: #025a3d;
+}
+
+
+#carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/*--Estilização dos Textos--*/
+h5.text-center {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #D9E6E1;
+    letter-spacing: 1px;
+    text-transform: uppercase; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    margin-top: 0;
+}
+
+.animal-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f6867;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Estilização do contêiner */
+.container.my-5 {
+    background: linear-gradient(to right, #005756, #048459);
+    border-radius: 10px;
+    padding: 2rem 0; 
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* Seção “Eventos Educacionais” */
+.eventos-educacionais {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #00ffaa5b;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.eventos-educacionais h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.eventos-educacionais p,
+.eventos-educacionais li {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.eventos-educacionais ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.eventos-educacionais li {
+  margin-bottom: 10px;
+}
+
+.imagem-eventos img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.texto-eventos {
+  padding: 20px;
+}
+
+.btn-saiba-mais {
+    background-color: #048459;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-saiba-mais:hover {
+    background-color: #025a3d;
+    color: #fff;
+  }
+
+
+  /* Seção “Como Chegar” */
+  .como-chegar-section {
+    background-color: #f8f9fa;
+    padding: 4rem 1rem;
+  }
+  
+  .como-chegar-titulo {
+    color: #0f6867;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  
+  .como-chegar-titulo i {
+    color: #025a3d;
+    margin-right: 0.5rem;
+  }
+  
+  .como-chegar-texto {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+  }
+  
+  .map-card {
+    border: 3px solid;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+/* Seção “FAQs” */
+.ajuda {
+    padding: 30px;
+    background-color:#e9ecef;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.answer {
+    display: none;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+.faq-item.active .answer {
+    display: block;
+}
+
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Linha abaixo da pergunta */
+.faq-item .question {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+}
+
+/* Seção “Rodapé” */
+.custom-footer {
+    background-color: #fef6f2;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .custom-footer h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .custom-footer p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-links li a {
+    color: #025a3d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .footer-links li a:hover {
+    color: #048459; /* laranja suave da sua paleta */
+  }
+  
